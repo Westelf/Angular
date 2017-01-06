@@ -16,21 +16,16 @@ export class MoviesComponent implements OnInit {
   private moviesList: any[];
 
   constructor(private moviesService: MoviesService) {
+    console.log('Constructor');
    }
 
   ngOnInit() {
-    this.moviesList = [{Title: 'Harry Potter', Country: 'UK'}];
+    console.log('ngOnInit');
+
     this.moviesService.getMovies()
-                      .subscribe(this.showResult);
-
-      console.log(this.moviesList);
-
-    //console.log(this.moviesService.getMovies());
+                      .subscribe(data => this.moviesList = data);
   }
 
-  showResult(data: any) {
-    this.moviesList = data;
-    //console.log(data);
-  }
+
 
 }
